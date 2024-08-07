@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 uppercase text-white bg-primary rounded-md;
+  }
+  .btn-primary:hover {
+    @apply text-white bg-hoverredcolor;
+  }
+}
+
+.scale-effect {
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
