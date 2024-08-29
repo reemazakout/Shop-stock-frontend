@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -8,18 +9,30 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Footer Links */}
             <div className="flex flex-col md:flex-row md:space-x-6">
-              <a href="#" className="py-2 px-4 text-white hover:text-gray-300">
+              <Link
+                to="home"
+                className="py-2 px-4 text-white hover:text-gray-300"
+              >
                 Home
-              </a>
-              <a href="#" className="py-2 px-4 text-white hover:text-gray-300">
+              </Link>
+              <Link
+                to="about"
+                className="py-2 px-4 text-white hover:text-gray-300"
+              >
                 About
-              </a>
-              <a href="#" className="py-2 px-4 text-white hover:text-gray-300">
-                Services
-              </a>
-              <a href="#" className="py-2 px-4 text-white hover:text-gray-300">
-                Contact
-              </a>
+              </Link>
+              <Link
+                to="category"
+                className="py-2 px-4 text-white hover:text-gray-300"
+              >
+                Categories
+              </Link>
+              <Link
+                to="allproducts"
+                className="py-2 px-4 text-white hover:text-gray-300"
+              >
+                All Products
+              </Link>
             </div>
 
             {/* Social Media Icons */}

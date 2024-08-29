@@ -1,11 +1,14 @@
+// src/Components/AppRouter/AppRouter.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "../Componants/Layout/Layout";
 import { lazy, Suspense } from "react";
 import Loading from "../Componants/Loading/Loading";
+import Orders from "../Paegs/Orders/Orders";
 //pages
 const Home = lazy(() => import("../Paegs/Home/Home"));
 const Categories = lazy(() => import("../Paegs/Categories/Categories."));
 const AboutUs = lazy(() => import("../Paegs/AboutUs/AboutUs"));
+const AllProducts = lazy(() => import("../Paegs/AllProducts/AllProducts"));
 const Products = lazy(() => import("../Paegs/Products/Products"));
 const Login = lazy(() => import("../Paegs/Login/Login"));
 const Register = lazy(() => import("../Paegs/Register/Register"));
@@ -20,7 +23,6 @@ export default function AppRouter() {
       children: [
         {
           index: true,
-
           element: (
             <Suspense fallback={<Loading />}>
               <Home />
@@ -51,6 +53,24 @@ export default function AppRouter() {
             </Suspense>
           ),
         },
+
+        {
+          path: "allproducts",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <AllProducts />
+            </Suspense>
+          ),
+        },
+
+        {
+          path: "orders",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Orders />
+            </Suspense>
+          ),
+        },
         {
           path: "category/products/:prefix",
           element: (
@@ -59,7 +79,6 @@ export default function AppRouter() {
             </Suspense>
           ),
         },
-
         {
           path: "login",
           element: (
@@ -76,7 +95,6 @@ export default function AppRouter() {
             </Suspense>
           ),
         },
-
         {
           path: "register",
           element: (
@@ -96,9 +114,6 @@ export default function AppRouter() {
       ],
     },
   ]);
-  return (
-    <>
-      <RouterProvider router={routes}></RouterProvider>
-    </>
-  );
+
+  return <RouterProvider router={routes} />;
 }

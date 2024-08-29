@@ -39,7 +39,7 @@ export default function NavBar() {
               </span>
             </Link>
 
-            <div className="hidden md:flex flex-grow justify-center">
+            <div className="hidden lg:flex flex-grow justify-center">
               <ul className="font-medium flex space-x-8">
                 <li>
                   <NavLink
@@ -56,7 +56,7 @@ export default function NavBar() {
                 </li>
                 <li>
                   <NavLink
-                    to="/products"
+                    to="/allproducts"
                     className={({ isActive }) =>
                       isActive
                         ? "px-4 py-2 text-white bg-black rounded-md"
@@ -64,7 +64,7 @@ export default function NavBar() {
                     }
                     aria-current="page"
                   >
-                    Products
+                    All Products
                   </NavLink>
                 </li>
                 <li>
@@ -91,14 +91,23 @@ export default function NavBar() {
                     About
                   </NavLink>
                 </li>
+
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "px-4 py-2 text-white bg-black rounded-md"
+                        : "block py-2 px-3 text-black rounded md:p-0 text-lg hover:text-slate-600"
+                    }
+                    to="/orders"
+                  >
+                    My Orders
+                  </NavLink>
+                </li>
               </ul>
             </div>
 
-            <div
-              className={`relative flex items-center justify-center px-5 ${
-                isAnimated ? "scale-effect" : ""
-              }`}
-            >
+            <div className="relative flex items-center justify-center px-5">
               <Link
                 to="/cartItem"
                 className="fa-solid fa-cart-shopping text-black text-2xl"
@@ -109,17 +118,17 @@ export default function NavBar() {
               </div>
             </div>
 
-            <div className="hidden md:flex space-x-4">
+            <div className="hidden lg:flex space-x-4">
               <Link to="/login" className="btn-primary px-4 py-2">
                 Login
               </Link>
-              <Link to="/register" className="btn-primary px-4 py-2  ">
+              <Link to="/register" className="btn-primary px-4 py-2">
                 Signin
                 <i className="pl-2 fa-solid fa-right-to-bracket"></i>
               </Link>
             </div>
 
-            <div className="flex md:hidden">
+            <div className="flex lg:hidden">
               <button
                 type="button"
                 className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
@@ -143,7 +152,7 @@ export default function NavBar() {
             </div>
           </div>
 
-          <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} p-4`}>
+          <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"} p-4`}>
             <div className="flex flex-col space-y-4">
               <ul className="font-medium flex flex-col space-y-4">
                 <li>

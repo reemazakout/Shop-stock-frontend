@@ -13,6 +13,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist/es/constants";
+import AllProductsSlice from "../AllProducts/AllProductsSlice";
 
 const cartPersistConfig = {
   key: "cart",
@@ -24,6 +25,8 @@ const cartPersistConfig = {
 const rootReducer = combineReducers({
   categories: CategoriesSlice,
   products: ProductsSlice,
+  allProducts: AllProductsSlice,
+
   cart: persistReducer(cartPersistConfig, cartSlice),
 });
 

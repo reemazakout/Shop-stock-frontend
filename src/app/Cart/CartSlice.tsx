@@ -3,6 +3,7 @@ import { TProduct } from "../../types/product";
 import { ThunkCart } from "./ThunkCart";
 
 import { TLoading } from "../../types/SharedTypes";
+import { toast } from "react-toastify";
 
 export interface ICartInfo {
   items: { [key: string]: number }; // The type of this is signature { [key: number]: number }
@@ -35,6 +36,7 @@ const cartSlice = createSlice({
       const id = action.payload;
       if (state.items[id]) {
         state.items[id] += 1;
+        toast.success("Item added to cart");
       } else {
         state.items[id] = 1;
       }
@@ -49,6 +51,7 @@ const cartSlice = createSlice({
         state.productFullInfo = state.productFullInfo.filter(
           (item) => item.id !== id
         );
+        toast.success("Item removed from cart !");
       }
     },
 
@@ -57,6 +60,7 @@ const cartSlice = createSlice({
       state.productFullInfo = state.productFullInfo.filter(
         (item) => item.id !== action.payload
       );
+      toast.success("Item removed from cart");
     },
     cleanProductFullInfo: (state) => {
       state.productFullInfo = [];

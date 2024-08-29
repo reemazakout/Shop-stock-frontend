@@ -4,6 +4,7 @@ import { Thunk } from "../../app/Categories/Thunk";
 import Category from "../../Componants/Category/Category";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet";
 
 export default function Categories() {
   const dispatch = useAppDispatch();
@@ -42,12 +43,18 @@ export default function Categories() {
   }
 
   return (
-    <div className="container py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {records.map((category) => (
-        <div key={category.id} className="col-span-1">
-          <Category category={category} />
-        </div>
-      ))}
-    </div>
+    <>
+      <Helmet>
+        <meta name="Categories" content="Categories" />
+        <title> Categories page</title>
+      </Helmet>
+      <div className="container py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {records.map((category) => (
+          <div key={category.id} className="col-span-1">
+            <Category category={category} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

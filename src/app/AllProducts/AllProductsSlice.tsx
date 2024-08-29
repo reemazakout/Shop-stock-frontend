@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TLoading } from "../../types/SharedTypes";
 import { TProduct } from "../../types/product";
-import { ThunkProduct } from "./ThunkProduct";
+import { ThunkAllProduct } from "./ThunkAllProduct";
 
 export interface IProducrsState {
   records: TProduct[];
@@ -15,8 +15,8 @@ const initialState: IProducrsState = {
   error: null,
 };
 
-const ProductsSlice = createSlice({
-  name: "Products",
+const AllProductsSlice = createSlice({
+  name: "allProducts",
   initialState,
   reducers: {
     cleanUp: (state) => {
@@ -25,15 +25,15 @@ const ProductsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(ThunkProduct.pending, (state) => {
+      .addCase(ThunkAllProduct.pending, (state) => {
         state.loading = "pending";
         state.error = null;
       })
-      .addCase(ThunkProduct.fulfilled, (state, action) => {
+      .addCase(ThunkAllProduct.fulfilled, (state, action) => {
         state.loading = "succeeded";
         state.records = action.payload;
       })
-      .addCase(ThunkProduct.rejected, (state, action) => {
+      .addCase(ThunkAllProduct.rejected, (state, action) => {
         state.loading = "failed";
         if (action.payload && typeof action.payload === "string") {
           state.error = action.payload;
@@ -42,6 +42,6 @@ const ProductsSlice = createSlice({
   },
 });
 
-export const { cleanUp } = ProductsSlice.actions;
-export default ProductsSlice.reducer;
-export { ThunkProduct };
+export const { cleanUp } = AllProductsSlice.actions;
+export default AllProductsSlice.reducer;
+export { ThunkAllProduct };
